@@ -1,0 +1,17 @@
+{
+  "name": "klaket",
+  "version": "0.7.0",
+  "description": "JS/TS client for Klaket — turn any video into LLM-ready data",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["video", "llm", "transcription", "whisper", "diarization"],
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

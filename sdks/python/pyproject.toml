@@ -1,0 +1,18 @@
+[project]
+name = "klaket"
+version = "0.7.0"
+description = "Python client for Klaket — turn any video into LLM-ready data"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+keywords = ["video", "llm", "transcription", "whisper", "diarization"]
+
+[project.urls]
+Homepage = "https://github.com/klaket/klaket"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["klaket*"]

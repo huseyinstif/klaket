@@ -1,0 +1,61 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build: ./apps/api
+    restart: unless-stopped
+    ports:
+      - "8484:8484"
+    environment:
+      REDIS_ADDR: redis:6379
+      DATA_DIR: /data
+      KLAKET_AUTH: "off"          # on -> require Bearer klk_ API keys (cloud mode)
+      # KLAKET_ADMIN_TOKEN: change-me   # enables /v1/admin/keys endpoints
+    volumes:
+      - klaket-data:/data
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  worker:
+    build: ./apps/worker
+    restart: unless-stopped
+    environment:
+      REDIS_ADDR: redis:6379
+      DATA_DIR: /data
+      WHISPER_MODEL: small        # tiny|base|small|medium|large-v3
+      WHISPER_DEVICE: cpu         # cpu|cuda
+      WHISPER_COMPUTE: int8       # int8 on cpu, float16 on cuda
+      KLAKET_OCR: "on"            # on|off — on-screen text extraction (local, keyless)
+      KLAKET_DIARIZE: "on"        # on|off — speaker diarization (local, keyless)
+      KLAKET_DIARIZE_THRESHOLD: "0.8"  # higher = fewer speaker clusters
+      KLAKET_MAX_DURATION: "0"    # seconds; 0 = unlimited (e.g. 14400 recommended for cloud)
+      KLAKET_VLM: "off"           # off|ollama|openai — scene descriptions (optional)
+      # KLAKET_VLM_BASE_URL: http://host.docker.internal:11434/v1
+      # KLAKET_VLM_MODEL: qwen2.5vl
+      # KLAKET_VLM_API_KEY: ...
+    volumes:
+      - klaket-data:/data
+      - whisper-models:/models
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  dashboard:
+    build: ./apps/dashboard
+    restart: unless-stopped
+    ports:
+      - "5180:80"
+    depends_on:
+      - api
+
+volumes:
+  klaket-data:
+  whisper-models:

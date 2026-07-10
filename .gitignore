@@ -1,0 +1,36 @@
+# data & artifacts
+/data/
+samples/
+*.mp4
+*.wav
+*.mkv
+*.webm
+
+# secrets
+.env
+*.key
+
+# local development notes (not part of the OSS project)
+MEMORY.md
+
+# go
+apps/api/klaket-api
+apps/api/klaket-api.exe
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# node
+node_modules/
+apps/dashboard/dist/
+apps/mcp/dist/
+sdks/js/dist/
+
+# os / editor
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
