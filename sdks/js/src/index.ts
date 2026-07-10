@@ -117,6 +117,11 @@ export class Klaket {
     await this.request("DELETE", `/v1/jobs/${jobId}`);
   }
 
+  /** This month's video-minute usage (and quota, in cloud mode). */
+  usage(): Promise<{ month: string; used_minutes: number; quota_minutes: number }> {
+    return this.request("GET", "/v1/usage");
+  }
+
   /** Block until the job finishes; throws on failure/timeout. */
   async wait(jobId: string, timeoutMs = 1_800_000, pollMs = 3_000): Promise<Job> {
     const deadline = Date.now() + timeoutMs;

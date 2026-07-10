@@ -1,17 +1,31 @@
 [project]
 name = "klaket"
 version = "0.7.0"
-description = "Python client for Klaket — turn any video into LLM-ready data"
+description = "Python client + CLI for Klaket — turn any video into LLM-ready data"
 readme = "README.md"
 license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.9"
-keywords = ["video", "llm", "transcription", "whisper", "diarization"]
+keywords = ["video", "llm", "transcription", "whisper", "diarization", "subtitles", "mcp"]
+authors = [{ name = "Klaket" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 [project.urls]
-Homepage = "https://github.com/klaket/klaket"
+Homepage = "https://github.com/huseyinstif/klaket"
+Repository = "https://github.com/huseyinstif/klaket"
+Issues = "https://github.com/huseyinstif/klaket/issues"
+
+[project.scripts]
+klaket = "klaket.cli:main"
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]

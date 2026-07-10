@@ -12,8 +12,9 @@
 
 LLMs read text. The web became readable with scrapers — but video, the largest store of human knowledge, is still locked away. Klaket unlocks it: give it a video URL or file, get back structured, timestamped, LLM-ready data.
 
-```
-klaket ingest "https://youtube.com/watch?v=..."
+```bash
+pip install klaket
+klaket ingest "https://youtube.com/watch?v=..." --wait
 ```
 
 ```jsonc

@@ -29,6 +29,12 @@ apps/dashboard/dist/
 apps/mcp/dist/
 sdks/js/dist/
 
+# package build artifacts
+*.tgz
+sdks/python/dist/
+sdks/python/*.egg-info/
+sdks/python/klaket.egg-info/
+
 # os / editor
 Thumbs.db
 .DS_Store

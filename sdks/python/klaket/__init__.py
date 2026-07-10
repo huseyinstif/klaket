@@ -38,6 +38,7 @@ class Klaket:
         model: str = "",
         prompt: str = "",
         num_speakers: int = 0,
+        translate_to: str = "",
         webhook_url: str = "",
     ) -> str:
         """Queue a video; returns the job id."""
@@ -48,6 +49,8 @@ class Klaket:
             body["prompt"] = prompt
         if num_speakers:
             body["num_speakers"] = num_speakers
+        if translate_to:
+            body["translate_to"] = translate_to
         if webhook_url:
             body["webhook_url"] = webhook_url
         return self._request("POST", "/v1/ingest", body)["id"]
