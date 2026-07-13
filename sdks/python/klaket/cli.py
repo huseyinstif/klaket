@@ -15,6 +15,7 @@ import argparse
 import json
 import os
 import sys
+import urllib.error
 
 from . import Klaket, KlaketError, __version__
 
@@ -131,6 +132,13 @@ def main(argv=None) -> int:
         args.func(args)
     except KlaketError as exc:
         print(f"error: {exc}", file=sys.stderr)
+        return 1
+    except urllib.error.URLError as exc:
+        print(
+            f"error: cannot reach the Klaket API at {args.api_url} ({exc.reason}). "
+            "Is the stack running? Start it with: docker compose up",
+            file=sys.stderr,
+        )
         return 1
     except KeyboardInterrupt:
         return 130
