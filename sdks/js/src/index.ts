@@ -1,7 +1,7 @@
 /**
  * Klaket JS/TS SDK — turn any video into LLM-ready data. Zero dependencies.
  *
- *   import { Klaket } from "klaket";
+ *   import { Klaket } from "klaket-sdk";
  *   const k = new Klaket();
  *   const result = await k.process("https://youtube.com/watch?v=...");
  */

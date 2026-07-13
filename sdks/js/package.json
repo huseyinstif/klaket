@@ -1,5 +1,5 @@
 {
-  "name": "klaket",
+  "name": "klaket-sdk",
   "version": "0.7.0",
   "description": "JS/TS client for Klaket — turn any video into LLM-ready data",
   "license": "MIT",

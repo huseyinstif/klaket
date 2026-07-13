@@ -3,11 +3,11 @@
 Typed JS/TS client for [Klaket](https://github.com/huseyinstif/klaket) — turn any video into LLM-ready data: word-timestamped transcripts, speaker labels, scenes, keyframes, on-screen text, chapters and subtitles.
 
 ```bash
-npm i klaket
+npm i klaket-sdk
 ```
 
 ```ts
-import { Klaket } from "klaket";
+import { Klaket } from "klaket-sdk";
 
 const k = new Klaket();                       // self-hosted on localhost:8484
 const result = await k.process("https://youtube.com/watch?v=...");

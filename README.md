@@ -54,8 +54,8 @@ result = Klaket().process("https://youtube.com/watch?v=...", num_speakers=2)
 ```
 
 ```ts
-// npm i klaket
-import { Klaket } from "klaket";
+// npm i klaket-sdk
+import { Klaket } from "klaket-sdk";
 const result = await new Klaket().process("https://youtube.com/watch?v=...");
 ```
 
