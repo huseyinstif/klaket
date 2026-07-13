@@ -1,0 +1,35 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.huseyinstif/klaket-mcp",
+  "description": "Let AI agents watch videos: word-timestamped transcripts, speaker labels, scenes, chapters and exact-moment search from any video URL or file, fully local",
+  "repository": {
+    "url": "https://github.com/huseyinstif/klaket",
+    "source": "github"
+  },
+  "version": "0.7.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "klaket-mcp",
+      "version": "0.7.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "KLAKET_API_URL",
+          "description": "Base URL of your Klaket API (default: http://localhost:8484)",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "KLAKET_API_KEY",
+          "description": "API key for cloud/authenticated deployments (not needed for local self-hosting)",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

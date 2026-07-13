@@ -1,6 +1,7 @@
 {
   "name": "klaket-mcp",
   "version": "0.7.1",
+  "mcpName": "io.github.huseyinstif/klaket-mcp",
   "description": "MCP server that lets AI agents watch videos through Klaket",
   "license": "MIT",
   "type": "module",
