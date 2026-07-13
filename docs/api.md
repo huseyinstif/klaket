@@ -102,7 +102,7 @@ The assembled `result.json` (only after `status=done`):
     { "index": 0, "start": 0.0, "end": 42.5,
       "title": "So today we're deploying with docker…", "segments": 6 }
   ],
-  "generated_at": "...", "klaket_version": "0.7.0"
+  "generated_at": "...", "klaket_version": "0.7.1"
 }
 ```
 

@@ -1,6 +1,6 @@
 [project]
 name = "klaket"
-version = "0.7.0"
+version = "0.7.1"
 description = "Python client + CLI for Klaket — turn any video into LLM-ready data"
 readme = "README.md"
 license = "MIT"

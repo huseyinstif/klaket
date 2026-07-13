@@ -64,7 +64,7 @@ function renderResult(r: any): string {
   return lines.join("\n");
 }
 
-const server = new McpServer({ name: "klaket", version: "0.7.0" });
+const server = new McpServer({ name: "klaket", version: "0.7.1" });
 
 server.tool(
   "klaket_ingest",

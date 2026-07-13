@@ -1,6 +1,6 @@
 {
   "name": "klaket-mcp",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "MCP server that lets AI agents watch videos through Klaket",
   "license": "MIT",
   "type": "module",

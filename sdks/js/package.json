@@ -1,6 +1,6 @@
 {
   "name": "klaket-sdk",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "JS/TS client for Klaket — turn any video into LLM-ready data",
   "license": "MIT",
   "type": "module",
