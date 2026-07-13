@@ -8,7 +8,7 @@
 
 ![Klaket demo](assets/demo.gif)
 
-> *Klaket* (Turkish): the clapperboard — the tool that syncs sound and image on a film set. **Klaket syncs video with LLMs.**
+> A *klaket* is a clapperboard — the tool that syncs sound and image on a film set. **Klaket syncs video with LLMs.**
 
 LLMs read text. The web became readable with scrapers — but video, the largest store of human knowledge, is still locked away. Klaket unlocks it: give it a video URL or file, get back structured, timestamped, LLM-ready data.
 
@@ -105,3 +105,7 @@ Klaket is open source (AGPL-3.0) and fully self-hostable. A hosted, pay-per-minu
 ## License
 
 [AGPL-3.0](LICENSE). SDKs and clients will be MIT.
+
+## Contact
+
+Built by Hüseyin Tıntaş — [X (@1337stif)](https://x.com/1337stif) · [LinkedIn](https://www.linkedin.com/in/huseyintintas/)

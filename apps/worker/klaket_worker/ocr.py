@@ -20,8 +20,8 @@ def _custom_model_kwargs() -> dict:
     """Optional recognition-model override for non-English/Chinese scripts.
 
     Point KLAKET_OCR_REC_URL / KLAKET_OCR_DICT_URL at any PaddleOCR-compatible
-    ONNX recognition model + key dictionary (e.g. the "latin" family covers 32
-    languages including Turkish). Files download once into the models volume.
+    ONNX recognition model + key dictionary (e.g. the "latin" family covers
+    32 languages). Files download once into the models volume.
     """
     import pathlib
     import urllib.request

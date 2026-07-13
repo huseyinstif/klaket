@@ -127,25 +127,25 @@ class TestEnvFlags:
 class TestPauseChapters:
     def test_splits_on_long_pause(self):
         transcript = [
-            {"start": 0.0, "end": 4.0, "text": "Intro konusu."},
-            {"start": 5.0, "end": 9.0, "text": "Devam ediyor."},   # 1s gap: same chapter
-            {"start": 14.0, "end": 20.0, "text": "Yeni konu başlıyor."},  # 5s gap: new chapter
+            {"start": 0.0, "end": 4.0, "text": "Intro topic."},
+            {"start": 5.0, "end": 9.0, "text": "Still going."},   # 1s gap: same chapter
+            {"start": 14.0, "end": 20.0, "text": "A new topic begins."},  # 5s gap: new chapter
         ]
         chapters = _chapters_from_pauses(transcript)
         assert len(chapters) == 2
-        assert chapters[0]["title"] == "Intro konusu."
+        assert chapters[0]["title"] == "Intro topic."
         assert chapters[0]["segments"] == 2
         assert chapters[1]["start"] == 14.0
-        assert chapters[1]["title"] == "Yeni konu başlıyor."
+        assert chapters[1]["title"] == "A new topic begins."
 
     def test_empty_transcript(self):
         assert _chapters_from_pauses([]) == []
 
     def test_build_chapters_falls_back_when_no_scenes(self):
-        transcript = [{"start": 0.0, "end": 2.0, "text": "Merhaba."}]
+        transcript = [{"start": 0.0, "end": 2.0, "text": "Hello there."}]
         chapters = _build_chapters(transcript, [])
         assert len(chapters) == 1
-        assert chapters[0]["title"] == "Merhaba."
+        assert chapters[0]["title"] == "Hello there."
 
 
 class TestSubtitles:
@@ -232,18 +232,18 @@ class TestSpeakerAssignment:
 
     def test_smoothing_fixes_short_speaker_blip(self):
         transcript = [
-            {"start": 0.0, "end": 4.0, "text": "uzun cümle", "speaker": "S1"},
-            {"start": 4.2, "end": 4.8, "text": "kısa", "speaker": "S2"},   # 0.6s blip
-            {"start": 5.0, "end": 9.0, "text": "devam ediyor", "speaker": "S1"},
+            {"start": 0.0, "end": 4.0, "text": "a longer sentence", "speaker": "S1"},
+            {"start": 4.2, "end": 4.8, "text": "brief", "speaker": "S2"},   # 0.6s blip
+            {"start": 5.0, "end": 9.0, "text": "keeps talking", "speaker": "S1"},
         ]
         out = diarize._smooth_speakers(transcript)
         assert out[1]["speaker"] == "S1"
 
     def test_smoothing_keeps_real_interjection(self):
         transcript = [
-            {"start": 0.0, "end": 4.0, "text": "soru soruyor", "speaker": "S1"},
-            {"start": 4.2, "end": 7.5, "text": "uzunca bir cevap veriyor", "speaker": "S2"},  # 3.3s: genuine
-            {"start": 8.0, "end": 12.0, "text": "tekrar konuşuyor", "speaker": "S1"},
+            {"start": 0.0, "end": 4.0, "text": "asks a question", "speaker": "S1"},
+            {"start": 4.2, "end": 7.5, "text": "gives a fairly long answer", "speaker": "S2"},  # 3.3s: genuine
+            {"start": 8.0, "end": 12.0, "text": "talks again", "speaker": "S1"},
         ]
         out = diarize._smooth_speakers(transcript)
         assert out[1]["speaker"] == "S2"

@@ -113,9 +113,9 @@ visual stages are skipped and chapters are derived from speech pauses instead.
 ## GET /v1/jobs/{id}/search?q=…
 
 Find moments inside a processed video (transcript lines, on-screen text, scene
-descriptions). Diacritic-insensitive (Turkish folding: `guvenlik` finds
-`güvenlik`), prefix-aware (`fiyat` finds `fiyatlandırma`) and typo-tolerant
-(one edit for tokens ≥5 chars). Top 10 hits:
+descriptions). Diacritic-insensitive (`uber` finds `über`), prefix-aware
+(`deploy` finds `deployment`) and typo-tolerant (one edit for tokens ≥5
+chars: `kubernets` finds `kubernetes`). Top 10 hits:
 
 ```jsonc
 { "query": "docker compose", "hits": [

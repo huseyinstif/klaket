@@ -88,15 +88,15 @@ func (s *server) handleSearch(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]any{"query": query, "hits": hits})
 }
 
-// Turkish diacritic folding: searching "guvenlik" must find "güvenlik".
-var trFold = strings.NewReplacer(
+// Diacritic folding: an ASCII query matches accented text ("uber" finds "über").
+var foldReplacer = strings.NewReplacer(
 	"İ", "i", "I", "i", "ı", "i",
 	"Ş", "s", "ş", "s", "Ğ", "g", "ğ", "g",
 	"Ü", "u", "ü", "u", "Ö", "o", "ö", "o", "Ç", "c", "ç", "c",
 	"Â", "a", "â", "a", "Î", "i", "î", "i", "Û", "u", "û", "u",
 )
 
-func fold(s string) string { return strings.ToLower(trFold.Replace(s)) }
+func fold(s string) string { return strings.ToLower(foldReplacer.Replace(s)) }
 
 // scoreText: diacritic-insensitive token matching + prefix + one-typo
 // tolerance; bonus when the full query appears verbatim.
@@ -121,7 +121,7 @@ func scoreText(query, text string) float64 {
 	return score
 }
 
-// matchLoose: prefix ("fiyat" → "fiyatlandırma") and typo tolerance ("bomab" → "bomba").
+// matchLoose: prefix ("deploy" → "deployment") and typo tolerance ("kubernets" → "kubernetes").
 func matchLoose(token string, words []string) bool {
 	for _, word := range words {
 		if len(token) >= 4 && strings.HasPrefix(word, token) {
