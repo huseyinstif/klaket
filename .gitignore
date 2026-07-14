@@ -40,3 +40,6 @@ Thumbs.db
 .DS_Store
 .idea/
 .vscode/
+
+# n8n integration build artifacts
+integrations/n8n/dist/
